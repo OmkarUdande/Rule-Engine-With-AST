@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Rule</title>
+  </head>
+  <body>
+    <h1>Create a New Rule</h1>
+    <form method="POST" action="{% url 'create_rule' %}">
+      {% csrf_token %}
+      <label for="rule_text">Rule Text:</label>
+      <input
+        type="text"
+        id="rule_text"
+        name="rule_text"
+        placeholder="e.g. age > 30 AND department == 'Sales'"
+        required
+      />
+      <button type="submit">Create Rule</button>
+    </form>
+    {% if error %}
+    <p style="color: red">{{ error }}</p>
+    {% endif %}
+  </body>
+</html>
